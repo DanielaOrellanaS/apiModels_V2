@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+<title>Feedback — calibración, ejecución y verdad del precio</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,"Segoe UI",Calibri,sans-serif; background:#F6F7FC; color:#26263A; }
+  header { background:linear-gradient(135deg,#161B45,#1E2761); color:white; padding:36px 32px 28px; }
+  header h1 { margin:0 0 6px; font-size:26px; font-weight:800; }
+  header p { margin:0; color:#CADCFC; font-size:13px; }
+  main { max-width:1200px; margin:24px auto 50px; padding:0 24px; }
+  section { background:white; border-radius:14px; padding:22px 24px; margin-bottom:24px; box-shadow:0 4px 18px rgba(30,39,97,.08); }
+  section h2 { color:#1E2761; font-size:18px; margin:0 0 4px; }
+  section .desc { color:#68697A; font-size:12.5px; margin:0 0 16px; }
+  table { width:100%; border-collapse:collapse; font-size:12.5px; }
+  thead th { text-align:left; padding:9px 12px; background:#F6F7FC; color:#68697A; font-size:10px; text-transform:uppercase; letter-spacing:.5px; }
+  tbody td { padding:8px 12px; border-top:1px solid #eee; }
+  td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .sin-datos { color:#68697A; font-style:italic; text-align:center; }
+  .badge { display:inline-block; padding:3px 9px; border-radius:20px; font-size:10px; font-weight:800; }
+  .alerta-roja { background:#FDE8E4; color:#6B241C; border-radius:8px; padding:12px 16px; margin-bottom:14px; font-size:12.5px; }
+  .nota { background:#FDF3E7; color:#5A4326; border-radius:8px; padding:12px 16px; margin-top:14px; font-size:11.5px; line-height:1.5; }
+</style></head><body>
+<header>
+  <h1>Feedback del modelo</h1>
+  <p>Generado 02/09/2026 08:43 — calibración de confianza, reconciliación de ejecución, y verdad del precio real</p>
+</header>
+<main>
+
+<section>
+  <h2>A. Calibración — ¿la confianza que dice la API tiene sentido?</h2>
+  <p class="desc">Cuando la API dice "70-75% de confianza", ¿realmente gana cerca del 70-75% de las veces? Basado en 587 operaciones reales emparejadas con su predicción.</p>
+  <table>
+    <thead><tr><th>Rango de confianza</th><th>Señales</th><th>Ganó</th><th>Winrate real</th><th>Estado</th></tr></thead>
+    <tbody><tr><td>60%-65%</td><td class="num">264</td><td class="num">84</td><td class="num">31,8%</td><td><span class="badge" style="background:#B03A2E22;color:#B03A2E;border:1px solid #B03A2E55">REVISAR</span></td></tr><tr><td>65%-70%</td><td class="num">120</td><td class="num">33</td><td class="num">27,5%</td><td><span class="badge" style="background:#B03A2E22;color:#B03A2E;border:1px solid #B03A2E55">REVISAR</span></td></tr><tr><td>70%-75%</td><td class="num">63</td><td class="num">20</td><td class="num">31,7%</td><td><span class="badge" style="background:#B03A2E22;color:#B03A2E;border:1px solid #B03A2E55">REVISAR</span></td></tr><tr><td>75%-80%</td><td class="num">50</td><td class="num">13</td><td class="num">26,0%</td><td><span class="badge" style="background:#B03A2E22;color:#B03A2E;border:1px solid #B03A2E55">REVISAR</span></td></tr><tr><td>80%-101%</td><td class="num">90</td><td class="num">24</td><td class="num">26,7%</td><td><span class="badge" style="background:#B03A2E22;color:#B03A2E;border:1px solid #B03A2E55">REVISAR</span></td></tr></tbody>
+  </table>
+</section>
+
+<section>
+  <h2>B. Reconciliación — ¿lo que se operó coincide con lo que pidió la API?</h2>
+  <p class="desc">Contrastado contra 5115 predicciones guardadas.</p>
+  <div class="alerta-roja"><b>⚠ 37 orden(es) huérfana(s) detectada(s)</b> — revisar YA, puede ser el mismo tipo de bug que tenía el sistema viejo (Neo_OSC operando sin pasar por el modelo).</div>
+  <p style="font-size:12.5px;font-weight:700;color:#1E2761;margin-bottom:8px">Órdenes huérfanas (se operó sin que la API lo pidiera)</p>
+  <table>
+    <thead><tr><th>Ticket</th><th>Símbolo</th><th>Tipo</th><th>Fecha</th><th>Profit</th></tr></thead>
+    <tbody><tr><td>110109698</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 00:15:00</td><td class="num">-0.27</td></tr><tr><td>110109705</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 00:20:00</td><td class="num">-0.25</td></tr><tr><td>110109744</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 00:35:00</td><td class="num">-0.27</td></tr><tr><td>110109793</td><td>NAS100</td><td>BUY</td><td>2026-08-14 01:00:00</td><td class="num">-0.1</td></tr><tr><td>110109764</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 00:45:00</td><td class="num">0.72</td></tr><tr><td>110109888</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 01:05:00</td><td class="num">-0.32</td></tr><tr><td>110109996</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 01:10:00</td><td class="num">-0.33</td></tr><tr><td>110112619</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 01:50:01</td><td class="num">-0.35</td></tr><tr><td>110113376</td><td>NAS100</td><td>SELL</td><td>2026-08-14 02:15:01</td><td class="num">0.16</td></tr><tr><td>110112995</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 02:05:00</td><td class="num">-0.36</td></tr><tr><td>110114624</td><td>NAS100</td><td>SELL</td><td>2026-08-14 03:05:00</td><td class="num">0.22</td></tr><tr><td>110115703</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 03:25:00</td><td class="num">-0.3</td></tr><tr><td>110115239</td><td>NAS100</td><td>SELL</td><td>2026-08-14 03:15:00</td><td class="num">0.28</td></tr><tr><td>110118735</td><td>NAS100</td><td>SELL</td><td>2026-08-14 04:05:00</td><td class="num">-0.14</td></tr><tr><td>110118987</td><td>NAS100</td><td>SELL</td><td>2026-08-14 04:10:00</td><td class="num">-0.13</td></tr><tr><td>110122356</td><td>NAS100</td><td>SELL</td><td>2026-08-14 04:50:00</td><td class="num">-0.13</td></tr><tr><td>110125390</td><td>NAS100</td><td>BUY</td><td>2026-08-14 06:05:00</td><td class="num">-0.06</td></tr><tr><td>110127157</td><td>NAS100</td><td>SELL</td><td>2026-08-14 07:45:00</td><td class="num">0.2</td></tr><tr><td>110127678</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 08:15:02</td><td class="num">-0.28</td></tr><tr><td>110127786</td><td>BTCUSD</td><td>BUY</td><td>2026-08-14 08:20:00</td><td class="num">-0.27</td></tr><tr><td>110127942</td><td>BTCUSD</td><td>SELL</td><td>2026-08-14 08:30:00</td><td class="num">-0.28</td></tr><tr><td>110127666</td><td>NAS100</td><td>SELL</td><td>2026-08-14 08:15:00</td><td class="num">-0.09</td></tr><tr><td>110130177</td><td>NAS100</td><td>SELL</td><td>2026-08-14 09:10:00</td><td class="num">-0.1</td></tr><tr><td>110129623</td><td>BTCUSD</td><td>SELL</td><td>2026-08-14 09:00:00</td><td class="num">2.64</td></tr><tr><td>110131299</td><td>NAS100</td><td>SELL</td><td>2026-08-14 10:00:00</td><td class="num">-0.08</td></tr><tr><td>110117858</td><td>GER40</td><td>BUY</td><td>2026-08-14 03:55:26</td><td class="num">0.8</td></tr><tr><td>110109794</td><td>US30</td><td>BUY</td><td>2026-08-14 01:00:00</td><td class="num">-0.64</td></tr><tr><td>110131698</td><td>GER40</td><td>BUY</td><td>2026-08-14 10:15:00</td><td class="num">-0.18</td></tr><tr><td>110131992</td><td>GER40</td><td>BUY</td><td>2026-08-14 10:25:00</td><td class="num">-0.21</td></tr><tr><td>110132136</td><td>GER40</td><td>BUY</td><td>2026-08-14 10:30:00</td><td class="num">-0.21</td></tr><tr><td>110133470</td><td>NAS100</td><td>BUY</td><td>2026-08-14 11:15:00</td><td class="num">-0.08</td></tr><tr><td>110134209</td><td>BTCUSD</td><td>SELL</td><td>2026-08-14 11:45:00</td><td class="num">-0.46</td></tr><tr><td>110134208</td><td>NAS100</td><td>BUY</td><td>2026-08-14 11:45:00</td><td class="num">-0.08</td></tr><tr><td>110134579</td><td>NAS100</td><td>BUY</td><td>2026-08-14 12:05:00</td><td class="num">-0.09</td></tr><tr><td>110135437</td><td>NAS100</td><td>BUY</td><td>2026-08-14 12:40:00</td><td class="num">-0.06</td></tr><tr><td>110135568</td><td>US30</td><td>SELL</td><td>2026-08-14 12:50:01</td><td class="num">-0.11</td></tr><tr><td>110135872</td><td>NAS100</td><td>SELL</td><td>2026-08-14 13:05:00</td><td class="num">-0.09</td></tr></tbody>
+  </table>
+  <p style="font-size:12.5px;font-weight:700;color:#1E2761;margin:16px 0 8px">Señales sin ejecutar (la API lo pidió, no se operó)</p>
+  <table>
+    <thead><tr><th>Símbolo</th><th>Tipo</th><th>Fecha</th><th>Confianza</th></tr></thead>
+    <tbody><tr><td>NAS100</td><td>SELL</td><td>2026-08-20T16:00:00</td><td class="num">63%</td></tr><tr><td>US30</td><td>SELL</td><td>2026-08-20T16:10:01</td><td class="num">70%</td></tr><tr><td>BTCUSD</td><td>SELL</td><td>2026-08-20T16:50:00</td><td class="num">60%</td></tr><tr><td>BTCUSD</td><td>BUY</td><td>2026-08-20T18:10:00</td><td class="num">63%</td></tr><tr><td>NAS100</td><td>SELL</td><td>2026-08-20T18:10:00</td><td class="num">63%</td></tr><tr><td>GER40</td><td>SELL</td><td>2026-08-20T19:45:02</td><td class="num">60%</td></tr><tr><td>GER40</td><td>BUY</td><td>2026-08-20T20:45:00</td><td class="num">69%</td></tr><tr><td>GER40</td><td>BUY</td><td>2026-08-20T21:10:00</td><td class="num">63%</td></tr><tr><td>GER40</td><td>BUY</td><td>2026-08-20T21:35:01</td><td class="num">66%</td></tr><tr><td>NAS100</td><td>SELL</td><td>2026-08-20T21:45:00</td><td class="num">68%</td></tr><tr><td>US30</td><td>SELL</td><td>2026-08-20T22:15:00</td><td class="num">63%</td></tr><tr><td>US30</td><td>SELL</td><td>2026-08-20T22:25:00</td><td class="num">65%</td></tr><tr><td>US30</td><td>SELL</td><td>2026-08-20T22:40:00</td><td class="num">66%</td></tr><tr><td>NAS100</td><td>BUY</td><td>2026-08-20T22:50:00</td><td class="num">60%</td></tr><tr><td>US30</td><td>SELL</td><td>2026-08-20T23:00:00</td><td class="num">63%</td></tr><tr><td>BTCUSD</td><td>BUY</td><td>2026-08-20T23:40:00</td><td class="num">60%</td></tr><tr><td>BTCUSD</td><td>BUY</td><td>2026-08-21T00:40:00</td><td class="num">61%</td></tr><tr><td>NAS100</td><td>SELL</td><td>2026-08-21T01:00:00</td><td class="num">62%</td></tr><tr><td>NAS100</td><td>SELL</td><td>2026-08-21T01:10:00</td><td class="num">61%</td></tr><tr><td>BTCUSD</td><td>BUY</td><td>2026-08-21T02:05:00</td><td class="num">63%</td></tr><tr><td colspan="4" class="sin-datos">... y 830 más</td></tr></tbody>
+  </table>
+  <div class="nota">Una señal sin ejecutar no es necesariamente un error — puede ser que ya hubiera una orden abierta de ese símbolo (una por vez, por diseño). Si el número es alto en proporción al total, ahí sí vale la pena revisar el log de Experts.</div>
+</section>
+
+<section>
+  <h2>C. Verdad del precio — ¿qué hizo el precio realmente después de cada señal?</h2>
+  <p class="desc">Independiente de si se operó o no: mirando el precio real que vino después, ¿tocó primero el TP o el SL?</p>
+  <p class="sin-datos">No se pasó --precio-dir, esta sección se salteó. Exportá precio real con EXPORTAR_PRECIO_SIMPLE.mq4 para activarla.</p>
+</section>
+
+</main>
+</body></html>

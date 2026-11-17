@@ -1,0 +1,60 @@
+{
+  "symbol": "NAS100",
+  "timeframe": "D1",
+  "lado": "BUY",
+  "k_tp": 2.0,
+  "k_sl": 1.0,
+  "horizonte_dias": 10,
+  "condiciones": [
+    {
+      "variable": "rel_ema50_200",
+      "tramo": "alto",
+      "desde": 0.04599017411899875,
+      "hasta": 0.08106125603082259
+    },
+    {
+      "variable": "adx5",
+      "tramo": "alto",
+      "desde": 31.009963235,
+      "hasta": 38.80711171
+    }
+  ],
+  "cortes_completos": {
+    "rel_ema50_200": {
+      "p25": 0.00787757095820213,
+      "p50": 0.04599017411899875,
+      "p75": 0.08106125603082259
+    },
+    "adx5": {
+      "p25": 24.4484415825,
+      "p50": 31.009963235,
+      "p75": 38.80711171
+    }
+  },
+  "entrenado_con": "NAS100_TRAIN_2017-10-16_al_2024-01-21_D1.csv",
+  "velas_entrenamiento": 1618,
+  "desde": "2017-10-16",
+  "hasta": "2024-01-19",
+  "generado_en": "2026-09-29T13:55:51+00:00",
+  "resultados_validacion": {
+    "entrenamiento": {
+      "n": 74,
+      "acierto": 0.54,
+      "promedio": 0.36,
+      "pf": 2.3
+    },
+    "holdout_a": {
+      "n": 34,
+      "acierto": 0.68,
+      "promedio": 0.32,
+      "pf": 3.95
+    },
+    "holdout_b": {
+      "n": 34,
+      "acierto": 0.47,
+      "promedio": 0.31,
+      "pf": 1.5
+    }
+  },
+  "aviso": "Regla en PRUEBA. Salio de una busqueda de 340 combinaciones, y el control mostro que del ruido salen unas 114 que parecen buenas. Sobrevivio a dos periodos nuevos, pero con 34 operaciones cada uno y un acierto que va de 68% a 47%. Ademas los dos periodos fueron alcistas. Operar con lote minimo."
+}
